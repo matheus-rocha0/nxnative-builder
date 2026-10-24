@@ -113,7 +113,7 @@ jobs:
         run: |
           cd "$RUNNER_TEMP/out"
           shasum -a 256 Game.ipa > Game.ipa.sha256
-          split -b 1800m Game.ipa Game.ipa.part_
+          split -b 600m Game.ipa Game.ipa.part_
           rm -f Game.ipa
           gh release view "$OUTPUT_TAG" --repo "$VAULT_REPO" >/dev/null 2>&1 || \
             gh release create "$OUTPUT_TAG" --repo "$VAULT_REPO" --title "IPA Build ($OUTPUT_TAG)" --notes "Automated private nxnative IPA output"
